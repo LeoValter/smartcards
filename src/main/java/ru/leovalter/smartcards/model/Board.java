@@ -1,8 +1,14 @@
 package ru.leovalter.smartcards.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 
-public class Board {
-    private String title;
+@Getter
+@Setter
+@ToString
+public class Board extends AbstractTitleEntity {
     private List<CardList> cardLists;
 }

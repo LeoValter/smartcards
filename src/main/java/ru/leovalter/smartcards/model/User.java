@@ -1,4 +1,11 @@
 package ru.leovalter.smartcards.model;
 
-public class User {
+import lombok.Data;
+
+@Data
+public class User extends AbstractBaseEntity {
+    private String firstName;
+    private String lastName;
+    private String login;
+    private String email;
 }
