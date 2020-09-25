@@ -1,10 +1,15 @@
 package ru.leovalter.smartcards.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MappedSuperclass
 public abstract class AbstractTitleEntity extends AbstractBaseEntity {
+    @Column(name = "name")
     private String title;
 }

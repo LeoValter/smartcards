@@ -1,6 +1,7 @@
 package ru.leovalter.smartcards.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,10 +12,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "card_lists")
-public class CardList extends AbstractTitleEntity {
+@Table(name = "to_do_lists")
+public class ToDoList extends AbstractTitleEntity {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "card_list")
-    private List<Card> cards;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "to_do_list")
+    private List<ToDoElement> toDoElements;
 
 }

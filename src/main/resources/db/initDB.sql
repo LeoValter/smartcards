@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS Comments;
 DROP TABLE IF EXISTS To_do_elements;
+DROP TABLE IF EXISTS To_do_lists;
 DROP TABLE IF EXISTS Cards;
 DROP TABLE IF EXISTS Card_lists;
 DROP TABLE IF EXISTS Boards;
@@ -48,13 +49,21 @@ CREATE TABLE Cards
     FOREIGN KEY (card_list_id) REFERENCES Card_lists (id) ON DELETE CASCADE
 );
 
+CREATE TABLE To_do_lists
+(
+    id      INTEGER PRIMARY KEY DEFAULT nextval('global_sequence'),
+    name    VARCHAR NOT NULL,
+    card_id INTEGER NOT NULL,
+    FOREIGN KEY (card_id) REFERENCES Cards (id) ON DELETE CASCADE
+);
+
 CREATE TABLE To_do_elements
 (
-    id          INTEGER PRIMARY KEY DEFAULT nextval('global_sequence'),
-    description TEXT    NOT NULL,
-    id_done     BOOLEAN             DEFAULT FALSE,
-    card_id     INTEGER NOT NULL,
-    FOREIGN KEY (card_id) REFERENCES Cards (id) ON DELETE CASCADE
+    id            INTEGER PRIMARY KEY DEFAULT nextval('global_sequence'),
+    description   TEXT    NOT NULL,
+    done          BOOLEAN             DEFAULT FALSE,
+    to_do_list_id INTEGER NOT NULL,
+    FOREIGN KEY (to_do_list_id) REFERENCES To_do_lists (id) ON DELETE CASCADE
 );
 
 CREATE TABLE Comments
@@ -69,14 +78,14 @@ CREATE TABLE Comments
 
 CREATE TABLE User_boards
 (
-  user_id INTEGER NOT NULL ,
-  board_id INTEGER NOT NULL ,
-  PRIMARY KEY (user_id, board_id)
+    user_id  INTEGER NOT NULL,
+    board_id INTEGER NOT NULL,
+    PRIMARY KEY (user_id, board_id)
 );
 
 CREATE TABLE User_card_comments
 (
-    user_id INTEGER NOT NULL ,
+    user_id    INTEGER NOT NULL,
     card_id    INTEGER NOT NULL,
     comment_id INTEGER NOT NULL,
     PRIMARY KEY (user_id, card_id, comment_id)
