@@ -1,12 +1,17 @@
 package ru.leovalter.smartcards.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ru.leovalter.smartcards.HasId;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
-public abstract class AbstractBaseEntity {
+public abstract class AbstractBaseEntity implements HasId {
 
     public static final int START_SEQ = 100000;
 
@@ -16,4 +21,10 @@ public abstract class AbstractBaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_sequence")
     private Integer id;
 
+    public AbstractBaseEntity() {
+    }
+
+    public AbstractBaseEntity(Integer id) {
+        this.id = id;
+    }
 }
