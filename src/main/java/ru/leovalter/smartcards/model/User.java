@@ -1,17 +1,18 @@
 package ru.leovalter.smartcards.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@ToString
 @EqualsAndHashCode(callSuper = true)
-@Getter
-@Setter
+@Data()
 @Entity
 @Table(name = "users")
 public class User extends AbstractBaseEntity {
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -25,8 +26,8 @@ public class User extends AbstractBaseEntity {
 
 //    private Role role;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private List<Board> boards;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+//    private List<Board> boards;
 
     public User() {
     }

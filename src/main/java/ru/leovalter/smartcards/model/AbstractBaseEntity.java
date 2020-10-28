@@ -8,8 +8,7 @@ import ru.leovalter.smartcards.HasId;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
 @MappedSuperclass
 public abstract class AbstractBaseEntity implements HasId {
 
