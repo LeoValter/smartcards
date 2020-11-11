@@ -1,22 +1,32 @@
 #!groovy
 
 pipeline {
-    agent {
-        label 'master'
-    }
+    agent any
     tools {
         maven 'maven'
         jdk 'jdk-8'
     }
-//    options {
-//        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-//        timestamps()
-//    }
     stages {
-        stage("Single step") {
+        stage('Initialize') {
             steps {
-                sh "mvn clean"
-                sh "mvn package"
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                    mvn clean
+                    mvn -Dmaven.test.failure.ignore=true install
+                '''
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }
             }
         }
     }
