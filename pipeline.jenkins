@@ -1,0 +1,23 @@
+#!groovy
+
+pipeline {
+    agent {
+        label 'master'
+    }
+    tools {
+        maven 'maven'
+        jdk 'jdk-8'
+    }
+//    options {
+//        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+//        timestamps()
+//    }
+    stages {
+        stage("Single step") {
+            steps {
+                sh "mvn clean"
+                sh "mvn package"
+            }
+        }
+    }
+}
