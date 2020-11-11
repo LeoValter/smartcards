@@ -29,10 +29,12 @@ pipeline {
                 }
             }
         }
-        stage() {
-            sh '''
-                echo "-------- FINISH ---------"
-            '''
+        stage('Finish') {
+            steps {
+                sh '''
+                    echo "-------- FINISH ---------"
+                '''
+            }
         }
     }
 }
