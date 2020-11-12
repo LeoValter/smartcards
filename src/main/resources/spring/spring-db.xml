@@ -21,8 +21,8 @@
 
     <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
 
-    <jdbc:initialize-database>
-        <jdbc:script location="classpath:db/initDB.sql"/>
+    <jdbc:initialize-database enabled="${database.init}">
+        <jdbc:script location="${jdbc.initLocation}"/>
         <jdbc:script encoding="UTF-8" location="classpath:db/populateDB.sql"/>
     </jdbc:initialize-database>
 
