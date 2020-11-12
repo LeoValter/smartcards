@@ -10,7 +10,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity
+//@Entity
 @Table(name = "boards")
 public class Board extends AbstractTitleEntity {
 
@@ -18,7 +18,7 @@ public class Board extends AbstractTitleEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board")
-    private List<CardList> cardLists;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "board")
+//    private List<CardList> cardLists;
 
 }

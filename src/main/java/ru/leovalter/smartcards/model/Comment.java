@@ -7,7 +7,7 @@ import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity
+//@Entity
 @Table(name = "comments")
 public class Comment extends AbstractBaseEntity {
 

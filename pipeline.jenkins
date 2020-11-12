@@ -4,9 +4,11 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        jdk 'jdk-8'
+        jdk 'jdk'
     }
+
     stages {
+
         stage('Initialize') {
             steps {
                 sh '''
@@ -29,10 +31,11 @@ pipeline {
                 }
             }
         }
-        stage('Finish') {
+
+        stage('Deploy') {
             steps {
                 sh '''
-                    echo "-------- FINISH ---------"
+                    mvn cargo:deployer-redeploy
                 '''
             }
         }

@@ -10,11 +10,11 @@
 
     <mvc:annotation-driven/>
 
-    <bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+<!--    <bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>-->
     <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 
-<!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
-<!--          p:prefix="/WEB-INF/"-->
-<!--          p:suffix=".jsp"/>-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/"
+          p:suffix=".jsp"/>
 
 </beans>

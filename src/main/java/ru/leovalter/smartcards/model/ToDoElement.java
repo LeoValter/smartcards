@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity
+//@Entity
 @Table(name = "to_do_elements")
 public class ToDoElement extends AbstractBaseEntity {
 

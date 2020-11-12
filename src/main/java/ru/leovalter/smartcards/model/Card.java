@@ -9,10 +9,14 @@ import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Entity
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
+//@Entity
 @Table(name = "cards")
 public class Card extends AbstractBaseEntity {
 
+    @NonNull
     @Column(name = "description")
     private String description;
 
@@ -20,13 +24,13 @@ public class Card extends AbstractBaseEntity {
     private final Status status = Status.MEDIUM;
 
     @Column(name = "date_of_create")
-    private Date dateOfCreate;
+    private Date dateOfCreate = new Date();
 
     @Column(name = "date_of_modified")
-    private Date dateOfModified;
+    private Date dateOfModified = null;
 
     @Column(name = "date_of_done")
-    private Date dateOfDone;
+    private Date dateOfDone = null;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "card")
     private Set<User> performers;

@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  web:
+    image: library/tomcat:9-alpine
+    container_name: tomcat
+    volumes:
+      - /Users/leovalter/docker/tomcat_volume/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - /Users/leovalter/docker/tomcat_volume/webapps/manager/META-INF/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+#  build-server:
+#    image: jenkins/jenkins
+#    container_name: jenkins
+#    ports:
+#      - 5000:5000
+#      - 8082:8080
+
+  db:
+    image: postgres
+    container_name: postgreSQL
+    restart: always
+    env_file:
+      - database.env
+    ports:
+      - "5432:5432"
