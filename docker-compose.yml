@@ -5,13 +5,12 @@ services:
   web:
     image: library/tomcat:9-alpine
     container_name: tomcat
+    restart: always
     volumes:
       - /Users/leovalter/docker/tomcat_volume/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - /Users/leovalter/docker/tomcat_volume/webapps/manager/META-INF/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
     ports:
       - 8080:8080
-    depends_on:
-      - db
 
   adminer:
     image: adminer
