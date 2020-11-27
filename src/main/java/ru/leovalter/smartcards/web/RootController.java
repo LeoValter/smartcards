@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RootController {
 
     @GetMapping("/")
-    public String root() {
-        return "index";
+    public String home() {
+        return "welcome";
+    }
+
+    @GetMapping("/admin")
+    public String privateHome() {
+        return "users";
     }
 }
