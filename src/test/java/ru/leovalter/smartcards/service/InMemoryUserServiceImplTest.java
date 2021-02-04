@@ -3,7 +3,6 @@ package ru.leovalter.smartcards.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import ru.leovalter.smartcards.UserTestData;
 import ru.leovalter.smartcards.model.User;
@@ -12,8 +11,13 @@ import ru.leovalter.smartcards.util.exception.NotFoundException;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static ru.leovalter.smartcards.UserTestData.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static ru.leovalter.smartcards.UserTestData.ADMIN;
+import static ru.leovalter.smartcards.UserTestData.ADMIN_ID;
+import static ru.leovalter.smartcards.UserTestData.USER;
+import static ru.leovalter.smartcards.UserTestData.USER_ID;
 
 @SpringJUnitConfig(locations ={"classpath:inmemory.xml"})
 class InMemoryUserServiceImplTest {

@@ -1,6 +1,7 @@
 package ru.leovalter.smartcards.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-//@Entity
+@Entity
 @Table(name = "card_lists")
 public class CardList extends AbstractTitleEntity {
 

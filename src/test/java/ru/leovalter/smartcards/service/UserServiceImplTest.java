@@ -13,8 +13,12 @@ import ru.leovalter.smartcards.util.exception.NotFoundException;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static ru.leovalter.smartcards.UserTestData.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static ru.leovalter.smartcards.UserTestData.ADMIN;
+import static ru.leovalter.smartcards.UserTestData.ADMIN_ID;
+import static ru.leovalter.smartcards.UserTestData.USER;
 import static ru.leovalter.smartcards.UserTestData.USER_ID;
 
 @SpringJUnitConfig(locations = {

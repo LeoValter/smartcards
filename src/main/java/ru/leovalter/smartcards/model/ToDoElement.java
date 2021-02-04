@@ -9,14 +9,14 @@ import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-//@Entity
+@Entity
 @Table(name = "to_do_elements")
 public class ToDoElement extends AbstractBaseEntity {
 
     @Column(name = "description")
-    String description;
+    private String description;
 
     @Column(name = "done")
-    boolean isDone = false;
+    private boolean isDone = false;
 
 }

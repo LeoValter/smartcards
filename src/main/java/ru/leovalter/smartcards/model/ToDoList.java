@@ -11,7 +11,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-//@Entity
+@Entity
 @Table(name = "to_do_lists")
 public class ToDoList extends AbstractTitleEntity {
 
